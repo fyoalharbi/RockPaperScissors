@@ -1,6 +1,9 @@
 let winCount = 0;
 let losesCount = 0;
-console.log(game());
+let computerSelection;
+let playerSelection;
+
+//console.log(game());
 
 function computerPlay(){
     let arr = ["rock", "Paper", "Scissors"];
@@ -8,40 +11,52 @@ function computerPlay(){
 }
 function play(playerSelection, computerSelection){
 
-     playerSelection = prompt("Enter: Rock or paper or scissors: ");
-     computerSelection = computerPlay();
+     console.log("You chose: " + playerSelection,"\n the computer chose: " + computerSelection);
+
     if( playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "rock"){
         winCount += 1;
-        return "You Win! Paper Beats Rock";
+        console.log( "You Win! Paper Beats Rock");
     }
     else if (playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "paper"){
         losesCount += 1;
-        return "You lose! Paper Beats Rock";
+        console.log( "You lose! Paper Beats Rock");
     }
     else if(playerSelection.toLowerCase() == "paper" && computerSelection.toLowerCase() == "scissors"){
         losesCount += 1;
-        return "You lose! Scissors Beats Paper";
+        console.log( "You lose! Scissors Beats Paper");
     }
     else if(playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "paper"){
         winCount += 1;
-        return "You win! Scissors Beats Paper";
+        console.log( "You win! Scissors Beats Paper");
     }
     else if(playerSelection.toLowerCase() == "rock" && computerSelection.toLowerCase() == "scissors"){
         winCount += 1;
-        return "You win! Rock beats Scissors";
+        console.log( "You win! Rock beats Scissors");
     }
     else if(playerSelection.toLowerCase() == "scissors" && computerSelection.toLowerCase() == "rock"){
         losesCount += 1;
-        return "You lose! Rock beats Scissors";
+        console.log( "You lose! Rock beats Scissors");
     }
     else if(playerSelection.toLowerCase() == computerSelection.toLowerCase()){
-        return "it's a tie";
+        console.log( "it's a tie");
     }
     else{
-        return "Enter a valid choice";
+        console.log( "Enter a valid choice");
     }
-}
-function game(){
+    
+   } 
+   
+    let button = document.querySelectorAll('button');
+    button.forEach((button) => {
+
+    button.addEventListener('click', () => {
+            play(button.id, computerPlay());
+        });
+        
+    });
+   
+
+/*function game(){
     for (let i = 1; i <= 5 ; i++){
         play();
         
@@ -56,4 +71,4 @@ function game(){
         console.log("You have lost!")
     }
     
-}
+}*/
